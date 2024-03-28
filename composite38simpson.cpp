@@ -6,22 +6,22 @@ using namespace std;
 float f(float x){
     return 1/(1+pow(x,2));
 }
-float formula(float h, float x[],int n){
-    float result;
-    for(int i=0;i<=n;i++){
-        if(i==0){
-            result=result+f(x[i]);
-        }else if(i==n){
-            result=result+f(x[i]);
-        }else if(i%3==0){
-            result=result+2*f(x[i]);
-        }else{
-            result=result+3*f(x[i]);
+float formula(float h, float x[], int n) {
+    float result = f(x[0]) + f(x[n]); // Start with end points
+
+    // Summation loop for the interior points
+    for (int i = 1; i < n; i++) {
+        if (i % 3 == 0) {
+            result += 2 * f(x[i]); // Every third point
+        } else {
+            result += 3 * f(x[i]); // Other points
         }
     }
-    result=(3*h/8)*result;
+
+    result *= (3 * h / 8); // Multiply by (3h/8)
     return result;
 }
+
 
 int main(){
     float a,b,h,result;

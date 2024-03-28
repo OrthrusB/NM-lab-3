@@ -18,9 +18,11 @@ float point(int n,float d, float c){
         return weight1 * f(c*-0.77460+d) + weight2 * f(c*0+d) + weight3 * f(c*0.77460+d);
     }
 }
-float formula(float c,float d, int n){
-    return c*(point(n,d,c));
+float formula(float c, float d, int n) {
+    float result = c * point(n, d, c); // Gauss quadrature approximation
+    return result;
 }
+
 
 int main(){
     float a,b,result;

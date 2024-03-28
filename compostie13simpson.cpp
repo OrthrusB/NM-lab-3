@@ -6,22 +6,21 @@ using namespace std;
 float f(float x){
     return exp(-pow(x,2));
 }
-float formula(float h, float x[],int n){
-    float result;
-    for(int i=0;i<=n;i++){
-        if(i==0){
-            result=result+f(x[i]);
-        }else if(i==n){
-            result=result+f(x[i]);
-        }else if(i%2==0){
-            result=result+2*f(x[i]);
-        }else{
-            result=result+4*f(x[i]);
+float formula(float h, float x[], int n) {
+    float result = 0;
+    for (int i = 0; i <= n; i++) {
+        if (i == 0 || i == n) {
+            result += f(x[i]);
+        } else if (i % 2 == 0) {
+            result += 2 * f(x[i]);
+        } else {
+            result += 4 * f(x[i]);
         }
     }
-    result=(h/3)*result;
+    result = (h / 3) * result;
     return result;
 }
+
 
 int main(){
     float a,b,h,result;
